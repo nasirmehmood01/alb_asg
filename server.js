@@ -23,6 +23,14 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/nasir", (req, res) => {
+  console.log("Calling Nasir URL ... ");
+  res.json({
+    success: true,
+    message: "Nasir API is running",
+  });
+});
+
 // Health check route for ALB target group
 app.get("/health", (req, res) => {
   console.log("Calling health URL ... ");
