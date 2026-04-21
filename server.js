@@ -13,7 +13,7 @@ app.use(express.json());
 
 // Default route
 app.get("/", (req, res) => {
-  console.log("Calling Default URL ... ");
+  console.log("Calling /default URL ... ");
   res.json({
     success: true,
     message: "Node.js API is running",
@@ -33,7 +33,7 @@ app.get("/nasir", (req, res) => {
 
 // Health check route for ALB target group
 app.get("/health", (req, res) => {
-  console.log("Calling health URL ... ");
+  console.log("Calling /health URL ... ");
   res.status(200).json({
     status: "healthy",
     instance: INSTANCE_ID,
@@ -44,7 +44,7 @@ app.get("/health", (req, res) => {
 
 // Info route to know which EC2 handled request
 app.get("/info", (req, res) => {
-  console.log("Calling info URL ... ");
+  console.log("Calling /info URL ... ");
   res.json({
     instance: INSTANCE_ID,
     hostname: os.hostname(),
@@ -61,7 +61,7 @@ app.get("/info", (req, res) => {
 // CPU stress test
 // Example: /stress?seconds=20
 app.get("/stress", (req, res) => {
-  console.log("Calling stress URL ... ");
+  console.log("Calling /stress URL ... ");
   const seconds = Math.min(parseInt(req.query.seconds) || 10, 60);
   const end = Date.now() + seconds * 1000;
 
@@ -87,7 +87,7 @@ app.get("/stress", (req, res) => {
 const memoryStore = [];
 
 app.get("/memory", (req, res) => {
-  console.log("Calling memory URL ... ");
+  console.log("Calling /memory URL ... ");
   const mb = Math.min(parseInt(req.query.mb) || 100, 500);
 
   const buffer = Buffer.alloc(mb * 1024 * 1024, "a");
